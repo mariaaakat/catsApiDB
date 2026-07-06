@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    //DB testing
+    testImplementation 'org.postgresql:postgresql:42.7.3'
+    testImplementation 'com.zaxxer:HikariCP:5.1.0'
+    testImplementation 'com.h2database:h2:2.2.224'
+    implementation 'com.zaxxer:HikariCP:5.1.0'
+}
+
+test {
+    useJUnitPlatform()
+    environment "DB_URL", "jdbc:h2:file:C:/Users/admin/Desktop/projects/catsApiDB/catsApiDB/data/cats-db;AUTO_SERVER=TRUE"
+    environment "DB_USER", "user"
+    environment "DB_PASSWORD", "1234"
+}
